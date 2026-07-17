@@ -711,14 +711,14 @@ footer p{
         margin-top:0px;
         display:none;
         padding:0px;
-        
+
+    }
+    .section-title {
+        margin-bottom: 0px;
     }
 .section-title p{
     display:none;
 }
-    /* AOS fade animations: only apply the offset BEFORE AOS animates the
-       element in. Once AOS adds .aos-animate the element settles at 0,0,0.
-       No !important here so it never gets stuck permanently shifted. */
     [data-aos="fade-right"]:not(.aos-animate),
     [data-aos="fade-left"]:not(.aos-animate){
         transform: translateY(30px);
