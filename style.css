@@ -530,13 +530,6 @@ footer p{
 /*responsive*/
 
 @media (max-width:768px){
-     ::-webkit-scrollbar{
-        width:0px;
-        display:none;
-    }
-    html{
-        scrollbar-width:none;   /* Firefox */
-    }
 
     /* Navbar */
 
@@ -727,4 +720,16 @@ footer p{
         flex-wrap:wrap;
     }
 
+    /* Hide the visible scrollbar (blue line) on mobile while scrolling */
+    ::-webkit-scrollbar{
+        width:0px;
+        display:none;
+    }
+
+}
+
+@media (max-width:768px){
+    html{
+        scrollbar-width:none; /* Firefox */
+    }
 }
