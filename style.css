@@ -707,7 +707,7 @@ footer p{
     .footer-icons{
         flex-wrap:wrap;
     }
-    .about-image img{
+    .about-image{
         margin-top:0px;
         display:none;
     }
