@@ -710,6 +710,8 @@ footer p{
     .about-image{
         margin-top:0px;
         display:none;
+        padding:0px;
+        
     }
 .section-title p{
     display:none;
