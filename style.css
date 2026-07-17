@@ -530,6 +530,13 @@ footer p{
 /*responsive*/
 
 @media (max-width:768px){
+     ::-webkit-scrollbar{
+        width:0px;
+        display:none;
+    }
+    html{
+        scrollbar-width:none;   /* Firefox */
+    }
 
     /* Navbar */
 
