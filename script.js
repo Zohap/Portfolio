@@ -92,16 +92,22 @@ document.addEventListener("DOMContentLoaded", () => {
         typeEffect();
     }
 
-    // Single AOS.init call — disables transform-based animations on mobile
-    // so they can never cause horizontal overflow/scroll issues.
+    // On mobile, swap horizontal AOS animations (fade-left / fade-right)
+    // for a vertical one (fade-up). This keeps animations working on
+    // Experience and Projects cards without ever pushing elements
+    // outside the viewport width (which was causing the horizontal
+    // scroll/overflow bug).
+    if (window.matchMedia("(max-width: 768px)").matches) {
+        document.querySelectorAll('[data-aos="fade-right"], [data-aos="fade-left"]').forEach(el => {
+            el.setAttribute("data-aos", "fade-up");
+        });
+    }
+
     if (window.AOS) {
         AOS.init({
             duration: 800,
             once: true,
-            offset: 80,
-            disable: window.innerWidth < 768 ? "mobile" : false
+            offset: 80
         });
     }
-    
 });
-
