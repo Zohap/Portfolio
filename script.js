@@ -102,24 +102,6 @@ document.addEventListener("DOMContentLoaded", () => {
             disable: window.innerWidth < 768 ? "mobile" : false
         });
     }
-     // ===== TEMPORARY DEBUG: finds & highlights elements causing horizontal overflow =====
-    // Remove this whole block once the culprit is fixed.
-    setTimeout(() => {
-        const vw = document.documentElement.clientWidth;
-        let found = [];
-        document.querySelectorAll("*").forEach(el => {
-            const rect = el.getBoundingClientRect();
-            if (rect.right > vw + 1 || rect.left < -1) {
-                el.style.outline = "3px solid red";
-                found.push(el.tagName + (el.className ? "." + String(el.className).replace(/\s+/g, ".") : "") + (el.id ? "#" + el.id : ""));
-            }
-        });
-        if (found.length) {
-            alert("Overflow culprit(s):\n" + found.join("\n"));
-        } else {
-            alert("No overflowing element found by this check. Page scrollWidth: " + document.documentElement.scrollWidth + " vs viewport: " + vw);
-        }
-    }, 1500);
-    // ===== END TEMPORARY DEBUG =====
+    
 });
 
