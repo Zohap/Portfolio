@@ -707,6 +707,9 @@ footer p{
     .footer-icons{
         flex-wrap:wrap;
     }
+    .about-image img{
+        display:none;
+    }
 
     /* AOS fade animations: only apply the offset BEFORE AOS animates the
        element in. Once AOS adds .aos-animate the element settles at 0,0,0.
