@@ -630,7 +630,9 @@ footer p{
     /* Section */
 
     .section{
-        padding:70px 0;
+        .section{
+    padding:30px 0;
+}
     }
 
     .section-title h2{
@@ -724,19 +726,4 @@ footer p{
     [data-aos="fade-left"]:not(.aos-animate){
         transform: translateY(30px);
     }
-.section-title{
-    text-align:center;
-    margin-bottom:35px;   /* desktop mein 70px hai, mobile ke liye kam kar diya */
-}
-
-.section-title h2{
-    font-size:32px;
-}
-
-.section-title p{
-    margin-top:6px;       /* thora kam kar diya, desktop mein 10px hai */
-}
-.section{
-    padding:50px 0;    /* filhal 70px hai mobile mein, aur kam kar diya */
-}
 }
