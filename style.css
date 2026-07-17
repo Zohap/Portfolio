@@ -708,9 +708,12 @@ footer p{
         flex-wrap:wrap;
     }
     .about-image img{
+        margin-top:0px;
         display:none;
     }
-
+.section-title p{
+    display:none;
+}
     /* AOS fade animations: only apply the offset BEFORE AOS animates the
        element in. Once AOS adds .aos-animate the element settles at 0,0,0.
        No !important here so it never gets stuck permanently shifted. */
