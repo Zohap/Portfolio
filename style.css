@@ -716,7 +716,9 @@ footer p{
     .section-title {
         margin-bottom: 0px;
     }
-   
+   .about-content h3{
+        font-size: medium;
+    }
 .section-title p{
     display:none;
 }
