@@ -4,6 +4,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const navLinks = document.querySelector(".nav-links");
     const scrollTop = document.getElementById("scrollTop");
     const typingElement = document.querySelector(".typing");
+
     function updateProgressBar() {
         const scrollTopValue = window.scrollY;
         const docHeight = document.documentElement.scrollHeight - window.innerHeight;
@@ -14,6 +15,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     window.addEventListener("scroll", updateProgressBar);
     window.addEventListener("load", updateProgressBar);
+
     if (menuBtn && navLinks) {
         const icon = menuBtn.querySelector("i");
         menuBtn.addEventListener("click", () => {
@@ -34,6 +36,7 @@ document.addEventListener("DOMContentLoaded", () => {
             });
         });
     }
+
     if (scrollTop) {
         function toggleScrollTop() {
             if (window.scrollY > 500) {
@@ -51,6 +54,7 @@ document.addEventListener("DOMContentLoaded", () => {
             });
         });
     }
+
     if (typingElement) {
         const words = [
             "Frontend Developer",
@@ -61,6 +65,7 @@ document.addEventListener("DOMContentLoaded", () => {
         let wordIndex = 0;
         let charIndex = 0;
         let isDeleting = false;
+
         function typeEffect() {
             const currentWord = words[wordIndex];
             if (!isDeleting) {
@@ -81,17 +86,40 @@ document.addEventListener("DOMContentLoaded", () => {
                     isDeleting = false;
                     wordIndex = (wordIndex + 1) % words.length;
                     setTimeout(typeEffect, 300);
-                
+                }
             }
         }
-      }
         typeEffect();
     }
+
+    // Single AOS.init call — disables transform-based animations on mobile
+    // so they can never cause horizontal overflow/scroll issues.
     if (window.AOS) {
         AOS.init({
             duration: 800,
             once: true,
-            offset: 80
+            offset: 80,
+            disable: window.innerWidth < 768 ? "mobile" : false
         });
     }
+     // ===== TEMPORARY DEBUG: finds & highlights elements causing horizontal overflow =====
+    // Remove this whole block once the culprit is fixed.
+    setTimeout(() => {
+        const vw = document.documentElement.clientWidth;
+        let found = [];
+        document.querySelectorAll("*").forEach(el => {
+            const rect = el.getBoundingClientRect();
+            if (rect.right > vw + 1 || rect.left < -1) {
+                el.style.outline = "3px solid red";
+                found.push(el.tagName + (el.className ? "." + String(el.className).replace(/\s+/g, ".") : "") + (el.id ? "#" + el.id : ""));
+            }
+        });
+        if (found.length) {
+            alert("Overflow culprit(s):\n" + found.join("\n"));
+        } else {
+            alert("No overflowing element found by this check. Page scrollWidth: " + document.documentElement.scrollWidth + " vs viewport: " + vw);
+        }
+    }, 1500);
+    // ===== END TEMPORARY DEBUG =====
 });
+
